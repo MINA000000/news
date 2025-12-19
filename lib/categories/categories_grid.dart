@@ -4,7 +4,8 @@ import 'package:news/categories/category_item.dart';
 import 'package:news/models/category_model.dart';
 
 class CategoriesGrid extends StatelessWidget {
-  CategoriesGrid({super.key});
+  CategoriesGrid({super.key, required this.onselectedCategory});
+  void Function(CategoryModel) onselectedCategory;
   List<CategoryModel> categoriesItems = [
     CategoryModel(
       color: AppTheme.sportsColor,
@@ -60,14 +61,15 @@ class CategoriesGrid extends StatelessWidget {
           SizedBox(height: 20),
           Expanded(
             child: GridView.builder(
-              
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 24,
                 crossAxisSpacing: 24,
               ),
-              itemBuilder: (context, index) =>
-                  CategoryItem(categoryModel: categoriesItems[index]),
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => onselectedCategory(categoriesItems[index]),
+                child: CategoryItem(categoryModel: categoriesItems[index]),
+              ),
               itemCount: 6,
             ),
           ),

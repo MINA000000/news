@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news/app_theme.dart';
 import 'package:news/categories/categories_grid.dart';
+import 'package:news/categories/category_details.dart';
+import 'package:news/models/category_model.dart';
 import 'package:news/settings/Setting_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   DrawerItem seletedDrawerItem = DrawerItem.categories;
-
+  CategoryModel? selectedCategoryModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,21 +24,39 @@ class _HomeScreenState extends State<HomeScreen> {
         image: DecorationImage(image: AssetImage('assets/images/pattern.png')),
       ),
       child: Scaffold(
-        appBar: AppBar(title: Text('News App')),
-        body: seletedDrawerItem == DrawerItem.categories
-            ? CategoriesGrid()
+        appBar: AppBar(
+          title: Text(
+            selectedCategoryModel != null
+                ? selectedCategoryModel!.name
+                : seletedDrawerItem == DrawerItem.categories
+                ? 'News App'
+                : 'Settings',
+          ),
+        ),
+        body: selectedCategoryModel != null
+            ? CategoryDetails()
+            : seletedDrawerItem == DrawerItem.categories
+            ? CategoriesGrid(onselectedCategory: onselectedCategory)
             : SettingTab(),
-        drawer: DrawerWidget(onSelectedItem: onSelectedItem),
+        drawer: DrawerWidget(onSelectedItem: onSelectedDrawerItem),
       ),
     );
   }
 
-  void onSelectedItem(DrawerItem item) {
+  void onSelectedDrawerItem(DrawerItem item) {
+    selectedCategoryModel = null;
     seletedDrawerItem = item;
     setState(() {});
     Navigator.of(context).pop();
   }
+
+  void onselectedCategory(CategoryModel category) {
+    selectedCategoryModel = category;
+    setState(() {});
+  }
 }
+
+enum DrawerItem { categories, settings }
 
 class DrawerWidget extends StatelessWidget {
   DrawerWidget({super.key, required this.onSelectedItem});
@@ -96,5 +116,3 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 }
-
-enum DrawerItem { categories, settings }

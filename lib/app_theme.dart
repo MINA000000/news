@@ -31,12 +31,17 @@ class AppTheme {
       titleLarge: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
-        color: black
+        color: black,
       ),
       titleMedium: TextStyle(
         fontSize: 22,
         fontWeight: FontWeight.bold,
         color: navy,
+      ),
+      titleSmall: TextStyle(
+        color: primary,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
       ),
     ),
   );
