@@ -9,37 +9,37 @@ class CategoriesGrid extends StatelessWidget {
   List<CategoryModel> categoriesItems = [
     CategoryModel(
       color: AppTheme.sportsColor,
-      id: 0,
+      id: 'sports',
       name: 'Sports',
       image: 'sports.png',
     ),
     CategoryModel(
       color: AppTheme.politicsColor,
-      id: 1,
+      id: 'politics',
       name: 'Politics',
       image: 'politics.png',
     ),
     CategoryModel(
       color: AppTheme.healthColor,
-      id: 2,
+      id: 'health',
       name: 'Health',
       image: 'health.png',
     ),
     CategoryModel(
       color: AppTheme.businessColor,
-      id: 3,
+      id: 'business',
       name: 'Business',
       image: 'business.png',
     ),
     CategoryModel(
       color: AppTheme.environmentColor,
-      id: 4,
+      id: 'environment',
       name: 'Environment',
       image: 'environment.png',
     ),
     CategoryModel(
       color: AppTheme.scienceColor,
-      id: 5,
+      id: 'science',
       name: 'Science',
       image: 'science.png',
     ),
@@ -68,7 +68,7 @@ class CategoriesGrid extends StatelessWidget {
               ),
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () => onselectedCategory(categoriesItems[index]),
-                child: CategoryItem(categoryModel: categoriesItems[index]),
+                child: CategoryItem(categoryModel: categoriesItems[index],index: index,),
               ),
               itemCount: 6,
             ),

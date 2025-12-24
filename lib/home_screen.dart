@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         body: selectedCategoryModel != null
-            ? CategoryDetails()
+            ? CategoryDetails(categoryId: selectedCategoryModel!.id,)
             : seletedDrawerItem == DrawerItem.categories
             ? CategoriesGrid(onselectedCategory: onselectedCategory)
             : SettingTab(),

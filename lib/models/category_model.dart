@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CategoryModel {
-  int id;
-  String name;
-  String image;
-  Color color;
+  final String id;
+  final String name;
+  final String image;
+  final Color color;
 
   CategoryModel({
     required this.color,

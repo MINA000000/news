@@ -3,8 +3,9 @@ import 'package:news/app_theme.dart';
 import 'package:news/models/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
-  CategoryItem({super.key, required this.categoryModel}); 
-  CategoryModel categoryModel;
+  CategoryItem({super.key, required this.categoryModel,required this.index}); 
+  final CategoryModel categoryModel;
+  final int index ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,10 +14,10 @@ class CategoryItem extends StatelessWidget {
         borderRadius: BorderRadiusDirectional.only(
           topEnd: Radius.circular(25),
           topStart: Radius.circular(25),
-          bottomEnd: categoryModel.id.isOdd
+          bottomEnd: index.isOdd
               ? Radius.circular(25)
               : Radius.circular(0),
-          bottomStart: categoryModel.id.isEven
+          bottomStart: index.isEven
               ? Radius.circular(25)
               : Radius.circular(0),
         ),
