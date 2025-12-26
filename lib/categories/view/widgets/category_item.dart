@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news/app_theme.dart';
-import 'package:news/models/category_model.dart';
+import 'package:news/shared/app_theme.dart';
+import 'package:news/categories/data/models/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
-  CategoryItem({super.key, required this.categoryModel,required this.index}); 
+  const CategoryItem({super.key, required this.categoryModel,required this.index}); 
   final CategoryModel categoryModel;
   final int index ;
   @override

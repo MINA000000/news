@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:news/app_theme.dart';
-import 'package:news/categories/category_item.dart';
-import 'package:news/models/category_model.dart';
+import 'package:news/shared/app_theme.dart';
+import 'package:news/categories/view/widgets/category_item.dart';
+import 'package:news/categories/data/models/category_model.dart';
 
 class CategoriesGrid extends StatelessWidget {
   CategoriesGrid({super.key, required this.onselectedCategory});
-  void Function(CategoryModel) onselectedCategory;
-  List<CategoryModel> categoriesItems = [
+  final void Function(CategoryModel) onselectedCategory;
+  final List<CategoryModel> categoriesItems = [
     CategoryModel(
       color: AppTheme.sportsColor,
       id: 'sports',
@@ -68,7 +68,10 @@ class CategoriesGrid extends StatelessWidget {
               ),
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () => onselectedCategory(categoriesItems[index]),
-                child: CategoryItem(categoryModel: categoriesItems[index],index: index,),
+                child: CategoryItem(
+                  categoryModel: categoriesItems[index],
+                  index: index,
+                ),
               ),
               itemCount: 6,
             ),

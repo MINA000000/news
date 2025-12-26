@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:news/app_theme.dart';
-import 'package:news/models/sources_response/sources.dart';
+import 'package:news/shared/app_theme.dart';
+import 'package:news/sources/data/models/sources.dart';
 
 class TabItem extends StatelessWidget {
-  TabItem({super.key, required this.source});
-  Sources source;
+  const TabItem({super.key, required this.source});
+  final Sources source;
   @override
   Widget build(BuildContext context) {
     return Container(
