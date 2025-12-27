@@ -32,7 +32,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           } else if (viewModel.errorMessage != null) {
             return ErrorIndicator(viewModel.errorMessage!);
           } else {
-            final sources = viewModel.sources;
+            final sources = viewModel.sourcesList;
             return SourcesTabs(sources: sources);
           }
         },
