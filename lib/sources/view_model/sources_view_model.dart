@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:news/shared/service_locator.dart';
+import 'package:news/sources/data/data_sources/sources_data_source.dart';
 import 'package:news/sources/data/models/sources.dart';
-import 'package:news/sources/data/repositories/sources_repository.dart';
 
 class SourcesViewModel with ChangeNotifier {
-  final repository = SourcesRepository();
+  late final SourcesDataSource repository;
+  SourcesViewModel() {
+    repository = ServiceLocator.sourcesDataSource;
+  }
   List<Sources> sourcesList = [];
   String? errorMessage;
   bool isLoading = false;

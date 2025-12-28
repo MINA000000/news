@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:news/news/data/data_sources/news_data_source.dart';
 import 'package:news/news/data/models/article.dart';
 import 'package:news/shared/api_constants.dart';
 import 'package:news/news/data/models/news_response.dart';
 
-class NewsApiDataSource {
+class NewsApiDataSource extends NewsDataSource {
+  @override
   Future<List<Article>> getNews(String sourceId) async {
     var uri = Uri.https(ApiConstants.baseUrl, ApiConstants.newsUrl, {
       'apiKey': ApiConstants.apiKey,
