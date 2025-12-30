@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news/news/view/screens/news_details.dart';
 import 'package:news/news/view/widgets/news_item.dart';
 import 'package:news/news/view_model/news_states.dart';
 import 'package:news/news/view_model/news_view_model.dart';
@@ -28,8 +29,17 @@ class _NewsListState extends State<NewsList> {
           return ErrorIndicator(state.errorMessage);
         } else if (state is GetNewsSuccess) {
           return ListView.builder(
-            itemBuilder: (context, index) =>
-                NewsItem(article: state.articles[index]),
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => NewsDetails(state.articles[index]),
+                  ),
+                );
+              },
+              child: NewsItem(article: state.articles[index]),
+            ),
             itemCount: state.articles.length,
           );
         } else {
