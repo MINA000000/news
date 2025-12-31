@@ -34,7 +34,7 @@ class _NewsListState extends State<NewsList> {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => NewsDetails(state.articles[index]),
+                    builder: (context) => Pare(state.articles[index]),
                   ),
                 );
               },
@@ -56,3 +56,4 @@ class _NewsListState extends State<NewsList> {
 
 //       },
 //     );
+//  does the newsDetails can access the view model ?

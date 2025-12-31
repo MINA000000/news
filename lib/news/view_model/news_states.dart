@@ -17,3 +17,12 @@ class GetNewsError extends NewsState {
 
   GetNewsError(this.errorMessage);
 }
+
+class OpenUrlLoading extends NewsState {}
+
+class OpenUrlSuccess extends NewsState {}
+
+class OpenUrlError extends NewsState {
+  final String errorMessage;
+  OpenUrlError(this.errorMessage);
+}

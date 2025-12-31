@@ -1,0 +1,7 @@
+different between : 
+-blocBuilder(
+    bloc: viewModel , 
+)
+-blocProvider(
+    create: (_)=> ViewModel(),
+) 

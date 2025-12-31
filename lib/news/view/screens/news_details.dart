@@ -1,20 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:news/news/data/models/article.dart';
 import 'package:news/news/view/widgets/news_item.dart';
+import 'package:news/news/view_model/news_states.dart';
+import 'package:news/news/view_model/news_view_model.dart';
 import 'package:news/shared/app_theme.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:news/shared/widgets/loading_indicator.dart';
 
-class NewsDetails extends StatelessWidget {
-  const NewsDetails(this.article, {super.key});
+class Pare extends StatelessWidget {
+  Pare(this.article, {super.key});
   final Article article;
+
+  final viewModel = NewsViewModel();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.white,
-        image: DecorationImage(image: AssetImage('assets/images/pattern.png')),
+    return BlocProvider(
+      create: (_) => viewModel,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppTheme.white,
+          image: DecorationImage(
+            image: AssetImage('assets/images/pattern.png'),
+          ),
+        ),
+        child: NewsDetails(article,viewModel: viewModel,),
       ),
+    );
+  }
+}
+
+class NewsDetails extends StatelessWidget {
+  const NewsDetails(this.article, {required this.viewModel,super.key});
+  final Article article;
+  final NewsViewModel viewModel;
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener(
+      bloc: viewModel,
+      listener: (_, state) {
+        if (state is OpenUrlLoading) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return LoadingIndicator();
+            },
+          );
+        } else if (state is OpenUrlError) {
+          hideLoadingDialog(context);
+          Fluttertoast.showToast(
+            msg: 'Failed to open the link',
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            toastLength: Toast.LENGTH_LONG,
+          );
+        } else {
+          hideLoadingDialog(context);
+        }
+      },
+
       child: Scaffold(
         appBar: AppBar(title: Text('News Details'), centerTitle: true),
         body: Padding(
@@ -42,17 +86,8 @@ class NewsDetails extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         GestureDetector(
-                          onTap: () async {
-                            final Uri url = Uri.parse(article.url!);
-                            try {
-                              await launchUrl(url);
-                            } catch (error) {
-                              Fluttertoast.showToast(
-                                msg: 'could\'t open Url',
-                                backgroundColor: Colors.red,
-                                textColor: Colors.white,
-                              );
-                            }
+                          onTap: () {
+                            context.read<NewsViewModel>().openUrl(article.url!);
                           },
                           child: Text('View full article'),
                         ),
@@ -68,4 +103,8 @@ class NewsDetails extends StatelessWidget {
       ),
     );
   }
+}
+
+void hideLoadingDialog(BuildContext context) {
+  Navigator.of(context, rootNavigator: true).pop();
 }
