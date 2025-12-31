@@ -36,7 +36,7 @@ class NewsDetails extends StatelessWidget {
   final NewsViewModel viewModel;
   @override
   Widget build(BuildContext context) {
-    return BlocListener(
+    return BlocListener<NewsViewModel,NewsState>(
       bloc: viewModel,
       listener: (_, state) {
         if (state is OpenUrlLoading) {
