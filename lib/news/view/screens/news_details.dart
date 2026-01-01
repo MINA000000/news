@@ -47,7 +47,7 @@ class NewsDetails extends StatelessWidget {
           child: Builder(
             builder: (context) {
               return Scaffold(
-                appBar: AppBar(title: Text('News Details'), centerTitle: true),
+                appBar: AppBar(title: Text("Mina Nasser"), centerTitle: true),
                 body: Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Column(
