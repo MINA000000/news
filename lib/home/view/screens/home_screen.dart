@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/home/view/widgets/drawer_widget.dart';
+import 'package:news/l10n/app_localizations.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/categories/view/widgets/categories_grid.dart';
 import 'package:news/categories/view/widgets/category_details.dart';
@@ -30,12 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedCategoryModel != null
                 ? selectedCategoryModel!.name
                 : seletedDrawerItem == DrawerItem.categories
-                ? 'News App'
+                ? AppLocalizations.of(context)!.helloWorld
                 : 'Settings',
           ),
         ),
         body: selectedCategoryModel != null
-            ? CategoryDetails(categoryId: selectedCategoryModel!.id,)
+            ? CategoryDetails(categoryId: selectedCategoryModel!.id)
             : seletedDrawerItem == DrawerItem.categories
             ? CategoriesGrid(onselectedCategory: onselectedCategory)
             : SettingsTab(),
