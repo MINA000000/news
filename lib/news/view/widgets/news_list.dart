@@ -34,7 +34,7 @@ class _NewsListState extends State<NewsList> {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Pare(state.articles[index]),
+                    builder: (context) => NewsDetails(state.articles[index]),
                   ),
                 );
               },
