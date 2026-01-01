@@ -24,20 +24,18 @@ class Pare extends StatelessWidget {
             image: AssetImage('assets/images/pattern.png'),
           ),
         ),
-        child: NewsDetails(article,viewModel: viewModel,),
+        child: NewsDetails(article),
       ),
     );
   }
 }
 
 class NewsDetails extends StatelessWidget {
-  const NewsDetails(this.article, {required this.viewModel,super.key});
+  const NewsDetails(this.article, {super.key});
   final Article article;
-  final NewsViewModel viewModel;
   @override
   Widget build(BuildContext context) {
-    return BlocListener<NewsViewModel,NewsState>(
-      bloc: viewModel,
+    return BlocListener<NewsViewModel, NewsState>(
       listener: (_, state) {
         if (state is OpenUrlLoading) {
           showDialog(
