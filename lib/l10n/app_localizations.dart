@@ -98,11 +98,113 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @helloWorld.
+  /// No description provided for @newsApp.
   ///
   /// In en, this message translates to:
-  /// **'Hello World!'**
-  String get helloWorld;
+  /// **'News App'**
+  String get newsApp;
+
+  /// No description provided for @pickYourCategoryOfInterest.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick your category\nof interest'**
+  String get pickYourCategoryOfInterest;
+
+  /// No description provided for @sports.
+  ///
+  /// In en, this message translates to:
+  /// **'Sports'**
+  String get sports;
+
+  /// No description provided for @politics.
+  ///
+  /// In en, this message translates to:
+  /// **'Politics'**
+  String get politics;
+
+  /// No description provided for @health.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get health;
+
+  /// No description provided for @business.
+  ///
+  /// In en, this message translates to:
+  /// **'business'**
+  String get business;
+
+  /// No description provided for @enviroment.
+  ///
+  /// In en, this message translates to:
+  /// **'Enviroment'**
+  String get enviroment;
+
+  /// No description provided for @science.
+  ///
+  /// In en, this message translates to:
+  /// **'Science'**
+  String get science;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @searchArticle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Article'**
+  String get searchArticle;
+
+  /// No description provided for @minaNasser.
+  ///
+  /// In en, this message translates to:
+  /// **'Mina Nasser'**
+  String get minaNasser;
+
+  /// No description provided for @viewfullarticle.
+  ///
+  /// In en, this message translates to:
+  /// **'View Full Article'**
+  String get viewfullarticle;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
+  /// No description provided for @failedToOpenTheLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to open the link'**
+  String get failedToOpenTheLink;
+
+  /// No description provided for @cantFindDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'t find description'**
+  String get cantFindDescription;
 }
 
 class _AppLocalizationsDelegate

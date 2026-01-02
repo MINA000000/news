@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:news/l10n/app_localizations.dart';
 import 'package:news/news/data/models/article.dart';
 import 'package:news/news/view/widgets/news_item.dart';
 import 'package:news/news/view_model/news_states.dart';
@@ -35,7 +36,7 @@ class NewsDetails extends StatelessWidget {
             } else if (state is OpenUrlError) {
               hideLoadingDialog(context);
               Fluttertoast.showToast(
-                msg: 'Failed to open the link',
+                msg: AppLocalizations.of(context)!.failedToOpenTheLink,
                 backgroundColor: Colors.red,
                 textColor: Colors.white,
                 toastLength: Toast.LENGTH_LONG,
@@ -47,7 +48,7 @@ class NewsDetails extends StatelessWidget {
           child: Builder(
             builder: (context) {
               return Scaffold(
-                appBar: AppBar(title: Text("Mina Nasser"), centerTitle: true),
+                appBar: AppBar(title: Text(AppLocalizations.of(context)!.minaNasser), centerTitle: true),
                 body: Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Column(
@@ -62,7 +63,7 @@ class NewsDetails extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              article.description ?? 'Can\'t find description',
+                              article.description ?? AppLocalizations.of(context)!.cantFindDescription,
                               style: Theme.of(context).textTheme.titleSmall
                                   ?.copyWith(
                                     fontWeight: FontWeight.w300,
@@ -79,7 +80,7 @@ class NewsDetails extends StatelessWidget {
                                       article.url!,
                                     );
                                   },
-                                  child: Text('View full article'),
+                                  child: Text(AppLocalizations.of(context)!.viewfullarticle),
                                 ),
                                 Icon(Icons.arrow_forward),
                               ],

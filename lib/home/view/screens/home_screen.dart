@@ -31,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedCategoryModel != null
                 ? selectedCategoryModel!.name
                 : seletedDrawerItem == DrawerItem.categories
-                ? AppLocalizations.of(context)!.helloWorld
-                : 'Settings',
+                ? AppLocalizations.of(context)!.newsApp
+                : AppLocalizations.of(context)!.settings,
           ),
         ),
         body: selectedCategoryModel != null

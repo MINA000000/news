@@ -1,3 +1,20 @@
 {
-    "helloWorld": "مرحبا"
+    "newsApp": "تطبيق الأخبار",
+    "pickYourCategoryOfInterest": "اختر فئة\nاهتمامك",
+    "sports": "الرياضة",
+    "politics": "السياسة",
+    "health": "الصحة",
+    "business": "الأعمال",
+    "enviroment": "البيئة",
+    "science": "العلوم",
+    "categories": "الفئات",
+    "settings": "الإعدادات",
+    "language": "اللغة",
+    "searchArticle": "ابحث عن مقال",
+    "minaNasser": "مينا ناصر",
+    "viewfullarticle": "عرض المقال كاملًا",
+    "english": "الانجليزية",
+    "arabic": "العربية",
+    "failedToOpenTheLink": "فشل في فتح الرابط",
+    "cantFindDescription": "لا يمكن العثور على الوصف"
 }

@@ -4,9 +4,13 @@ class SettingsInitial extends SettingsState {}
 
 class ChangeLanLoading extends SettingsState {}
 
-class ChangeLanSuccess extends SettingsState {
+class LanSuccess extends SettingsState {
   final String lan;
-  ChangeLanSuccess(this.lan);
+  LanSuccess(this.lan);
+}
+
+class ChangeLanSuccess extends LanSuccess {
+  ChangeLanSuccess(super.lan);
 }
 
 class ChangeLanError extends SettingsState {
@@ -16,10 +20,8 @@ class ChangeLanError extends SettingsState {
 
 class GetLanLoading extends SettingsState {}
 
-class GetLanSuccess extends SettingsState {
-  final String lan;
-
-  GetLanSuccess(this.lan);
+class GetLanSuccess extends LanSuccess {
+  GetLanSuccess(super.lan);
 }
 
 class GetLanError extends SettingsState {

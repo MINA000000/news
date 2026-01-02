@@ -1,3 +1,20 @@
 {
-    "helloWorld": "Hello World!"
+    "newsApp": "News App",
+    "pickYourCategoryOfInterest": "Pick your category\nof interest",
+    "sports": "Sports",
+    "politics": "Politics",
+    "health": "Health",
+    "business": "business",
+    "enviroment": "Enviroment",
+    "science": "Science",
+    "categories": "Categories",
+    "settings": "Settings",
+    "language": "Language",
+    "searchArticle": "Search Article",
+    "minaNasser": "Mina Nasser",
+    "viewfullarticle": "View Full Article",
+    "english": "English",
+    "arabic": "Arabic",
+    "failedToOpenTheLink":"Failed to open the link",
+    "cantFindDescription":"Can't find description"
 }
