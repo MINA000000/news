@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/home/view/widgets/drawer_widget.dart';
 import 'package:news/l10n/app_localizations.dart';
+import 'package:news/news/view/screens/news_search.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/categories/view/widgets/categories_grid.dart';
 import 'package:news/categories/view/widgets/category_details.dart';
@@ -34,6 +35,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? AppLocalizations.of(context)!.newsApp
                 : AppLocalizations.of(context)!.settings,
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsetsDirectional.only(end: 25),
+              child: IconButton(
+                icon: Icon(Icons.search_sharp),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewsSearch()),
+                  );
+                },
+                iconSize: 35,
+              ),
+            ),
+          ],
         ),
         body: selectedCategoryModel != null
             ? CategoryDetails(categoryId: selectedCategoryModel!.id)

@@ -26,3 +26,15 @@ class OpenUrlError extends NewsState {
   final String errorMessage;
   OpenUrlError(this.errorMessage);
 }
+
+class SearchNewsLoading extends NewsState {}
+
+class SearchNewsSuccess extends NewsState {
+  final List<Article> articles;
+  SearchNewsSuccess(this.articles);
+}
+
+class SearchNewsError extends NewsState {
+  final String errorMessage;
+  SearchNewsError(this.errorMessage);
+}

@@ -11,9 +11,6 @@ class NewsViewModel extends Cubit<NewsState> {
     repository = ServiceLocator.newsDataSource;
   }
 
-  List<Article> articles = [];
-  bool isLoading = false;
-  String? errorMessage;
   Future<void> getNews(String sourceId) async {
     emit(GetNewsLoading());
     try {
@@ -29,13 +26,27 @@ class NewsViewModel extends Cubit<NewsState> {
     try {
       final Uri url = Uri.parse(linkUrl);
 
-      // Remove this in production — just for testing!
-      await Future.delayed(const Duration(seconds: 1)); // Fake 3-second delay
+      await Future.delayed(const Duration(seconds: 1));
 
       await launchUrl(url);
       emit(OpenUrlSuccess());
     } catch (error) {
       emit(OpenUrlError(error.toString()));
+    }
+  }
+
+  void searchNews(String searchWord, List<Article> articles) {
+    try {
+      emit(SearchNewsLoading());
+      final keywords = searchWord.toLowerCase().split(' ');
+
+      List<Article> searchedArticles = articles.where((article) {
+        final title = article.title!.toLowerCase();
+        return keywords.every((keyword) => title.contains(keyword));
+      }).toList();
+      emit(SearchNewsSuccess(searchedArticles));
+    } catch (error) {
+      emit(SearchNewsError(error.toString()));
     }
   }
 }
