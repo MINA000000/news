@@ -35,7 +35,7 @@ class NewsViewModel extends Cubit<NewsState> {
     }
   }
 
-  void searchNews(String searchWord, List<Article> articles) {
+  void searchNews(String searchWord, List<Article> articles) async {
     try {
       emit(SearchNewsLoading());
       final keywords = searchWord.toLowerCase().split(' ');
@@ -44,6 +44,7 @@ class NewsViewModel extends Cubit<NewsState> {
         final title = article.title!.toLowerCase();
         return keywords.every((keyword) => title.contains(keyword));
       }).toList();
+      await Future.delayed(const Duration(seconds: 1));
       emit(SearchNewsSuccess(searchedArticles));
     } catch (error) {
       emit(SearchNewsError(error.toString()));

@@ -16,12 +16,15 @@ class NewsList extends StatefulWidget {
 }
 
 class _NewsListState extends State<NewsList> {
-  final viewModel = NewsViewModel();
   @override
   Widget build(BuildContext context) {
-    viewModel.getNews(widget.sourceId);
+    context.read<NewsViewModel>().getNews(widget.sourceId);
     return BlocBuilder<NewsViewModel, NewsState>(
-      bloc: viewModel,
+      buildWhen: (previous, current) {
+        return (current is GetNewsLoading) ||
+            (current is GetNewsError) ||
+            (current is GetNewsSuccess);
+      },
       builder: (_, state) {
         if (state is GetNewsLoading) {
           return LoadingIndicator();

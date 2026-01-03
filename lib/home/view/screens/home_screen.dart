@@ -35,21 +35,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? AppLocalizations.of(context)!.newsApp
                 : AppLocalizations.of(context)!.settings,
           ),
-          actions: [
-            Padding(
-              padding: const EdgeInsetsDirectional.only(end: 25),
-              child: IconButton(
-                icon: Icon(Icons.search_sharp),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NewsSearch()),
-                  );
-                },
-                iconSize: 35,
-              ),
-            ),
-          ],
+          actions: (selectedCategoryModel != null)
+              ? [
+                  Padding(
+                    padding: const EdgeInsetsDirectional.only(end: 25),
+                    child: IconButton(
+                      icon: Icon(Icons.search_sharp),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NewsSearch()),
+                        );
+                      },
+                      iconSize: 35,
+                    ),
+                  ),
+                ]
+              : null,
         ),
         body: selectedCategoryModel != null
             ? CategoryDetails(categoryId: selectedCategoryModel!.id)
